@@ -13,9 +13,9 @@
         android:layout_height="46dp"
         android:layout_marginTop="64dp"
         android:ems="10"
-        android:inputType="textEmailAddress"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.174"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email_text_entry" />
 
@@ -25,9 +25,9 @@
         android:layout_height="46dp"
         android:layout_marginTop="64dp"
         android:ems="10"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.174"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name_entry" />
 
@@ -37,33 +37,21 @@
         android:layout_height="46dp"
         android:layout_marginTop="64dp"
         android:ems="10"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.174"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_entry" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.549"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.949" />
 
     <EditText
         android:id="@+id/email_text_entry"
         android:layout_width="210dp"
         android:layout_height="46dp"
-        android:layout_marginTop="61dp"
+        android:layout_marginTop="60dp"
         android:ems="10"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.174"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -76,5 +64,90 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordConf_entry" />
+
+    <TextView
+        android:id="@+id/email_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/background_email"
+        app:layout_constraintBottom_toBottomOf="@+id/email_text_entry"
+        app:layout_constraintEnd_toEndOf="@+id/email_text_entry"
+        app:layout_constraintStart_toStartOf="@+id/email_text_entry"
+        app:layout_constraintTop_toTopOf="@+id/email_text_entry" />
+
+    <TextView
+        android:id="@+id/name_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/background_name"
+        app:layout_constraintBottom_toBottomOf="@+id/name_entry"
+        app:layout_constraintEnd_toEndOf="@+id/name_entry"
+        app:layout_constraintStart_toStartOf="@+id/name_entry"
+        app:layout_constraintTop_toTopOf="@+id/name_entry" />
+
+    <TextView
+        android:id="@+id/password_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/background_password"
+        app:layout_constraintBottom_toBottomOf="@+id/password_entry"
+        app:layout_constraintEnd_toEndOf="@+id/password_entry"
+        app:layout_constraintStart_toStartOf="@+id/password_entry"
+        app:layout_constraintTop_toTopOf="@+id/password_entry" />
+
+    <TextView
+        android:id="@+id/confirm_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/background_confirm"
+        app:layout_constraintBottom_toBottomOf="@+id/passwordConf_entry"
+        app:layout_constraintEnd_toEndOf="@+id/passwordConf_entry"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="@+id/passwordConf_entry"
+        app:layout_constraintTop_toTopOf="@+id/passwordConf_entry" />
+
+    <TextView
+        android:id="@+id/email_err_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:text="@string/email_err"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/email_text_entry"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/name_err_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:text="@string/name_err"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/name_entry"
+        app:layout_constraintTop_toBottomOf="@+id/email_err_view" />
+
+    <TextView
+        android:id="@+id/pass_err_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:text="@string/password_err"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/password_entry"
+        app:layout_constraintTop_toBottomOf="@+id/name_err_view" />
+
+    <TextView
+        android:id="@+id/conf_err_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:text="@string/conf_err"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/passwordConf_entry"
+        app:layout_constraintTop_toBottomOf="@+id/pass_err_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
