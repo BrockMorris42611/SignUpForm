@@ -79,7 +79,6 @@ public class FormActivity extends AppCompatActivity {
             pass_err_mssg.setVisibility(View.VISIBLE);
         if(new_info.getPasswordConf().equals(""))
             passConf_err_mssg.setVisibility(View.VISIBLE);
-
         if(!new_info.getPassword().equals(new_info.getPasswordConf())){
             passConf_err_mssg.setText(R.string.match_err);
             passConf_err_mssg.setVisibility(View.VISIBLE);
