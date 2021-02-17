@@ -8,7 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+/*
+Brock Morris tuj42611
 
+Proffesor Morris 2/17/21
+
+assignment 2
+ */
 public class FormActivity extends AppCompatActivity {
 
     EditText email_tb; //define the text fields for the info input
@@ -46,46 +53,63 @@ public class FormActivity extends AppCompatActivity {
         pass_background = findViewById(R.id.password_view);
         passConf_background = findViewById(R.id.confirm_view);
 
-        email_err_mssg = findViewById(R.id.email_err_view);
+        email_err_mssg = findViewById(R.id.email_err_view); //Get the error messages set to their strings
         name_err_mssg = findViewById(R.id.name_err_view);
         pass_err_mssg = findViewById(R.id.pass_err_view);
         passConf_err_mssg = findViewById(R.id.conf_err_view);
 
 
-
         send.setOnClickListener(new View.OnClickListener() { //get the button ready to listen for click
             @Override
             public void onClick(View v) {
-                arriving_user = new UserLoginInfo( //setting up new object for user with the new info
+
+                if(email_err_mssg.getVisibility() == View.VISIBLE) //this is just to make sure that for every time we press the button we get rid of the error messages and then reset if needed
+                    email_err_mssg.setVisibility(View.INVISIBLE);
+                if(name_err_mssg.getVisibility() == View.VISIBLE)
+                    name_err_mssg.setVisibility(View.INVISIBLE);
+                if(pass_err_mssg.getVisibility() == View.VISIBLE)
+                    pass_err_mssg.setVisibility(View.INVISIBLE);
+                if(passConf_err_mssg.getVisibility() == View.VISIBLE)
+                    passConf_err_mssg.setVisibility(View.INVISIBLE);
+
+                    arriving_user = new UserLoginInfo( //setting up new object for user with the new info
                         email_tb.getText().toString(),
                         name_tb.getText().toString(),
                         pass_tb.getText().toString(),
                         passConf_tb.getText().toString());
-                check_input(arriving_user);
-                Log.v("email> ", arriving_user.getEmail()); //print it all to logs to make sure
-                Log.v("name> ", arriving_user.getName());
-                Log.v("password> ",arriving_user.getPassword());
-                Log.v("confirmed password> ", arriving_user.getPasswordConf());
+                if(check_input(arriving_user)) //returns true if there is no error detected and in this case we will post a toast on that occasion
+                    Toast.makeText(FormActivity.this, "Welcome, " + arriving_user.getName() + " to the SignUpForm App!", Toast.LENGTH_LONG).show();
             }
         });
     }
-    public void check_input(UserLoginInfo new_info){ //make sure all our input is valid
+    public boolean check_input(UserLoginInfo new_info){ //make sure all our input is valid
 
-        if(new_info.getEmail().equals(""))              //these are all checking for empty string
+        boolean fields_filled = true;
+
+        if(new_info.getEmail().equals("")) {              //these are all checking for empty string and then make the error textview visible
             email_err_mssg.setVisibility(View.VISIBLE);
-        if(new_info.getName().equals(""))
+            fields_filled = false;
+        }
+        if(new_info.getName().equals("")) {
             name_err_mssg.setVisibility(View.VISIBLE);
-        if(new_info.getPassword().equals(""))
+            fields_filled = false;
+        }
+        if(new_info.getPassword().equals("")) {
             pass_err_mssg.setVisibility(View.VISIBLE);
-        if(new_info.getPasswordConf().equals(""))
+            fields_filled = false;
+        }
+        if(new_info.getPasswordConf().equals("")) {
             passConf_err_mssg.setVisibility(View.VISIBLE);
-        if(!new_info.getPassword().equals(new_info.getPasswordConf())){
+            fields_filled = false;
+        }else if(!new_info.getPassword().equals(new_info.getPasswordConf())){ // field cannot be empty and contain a string at the same time
             passConf_err_mssg.setText(R.string.match_err);
             passConf_err_mssg.setVisibility(View.VISIBLE);
+            fields_filled = false;
         }
+        return fields_filled;
     }
 }
-class UserLoginInfo {
+class UserLoginInfo { //object representing a user holding its info
 
     private String name;
     private String email;

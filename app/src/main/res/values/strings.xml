@@ -4,10 +4,10 @@
     <string name="background_email">email</string>
     <string name="background_name">name</string>
     <string name="background_password">password</string>
-    <string name="background_confirm">confirm password</string>
+    <string name="background_confirm">confirm</string>
     <string name="email_err">enter your email</string>
     <string name="name_err">enter your name</string>
     <string name="password_err">enter a password</string>
-    <string name="conf_err">confirm the password</string>
-    <string name="match_err">reenter the password</string>
+    <string name="conf_err">confirm password</string>
+    <string name="match_err">reenter password</string>
 </resources>
